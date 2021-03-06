@@ -1,0 +1,20 @@
+---
+# AutoSell by MCA7 [Copyright (C) 2021, All Rights Reserved]
+name: AutoSell
+main: AutoSell\Main
+api: 3.17.5
+load: POSTWORLD
+version: 2.0.0
+depend: EconomyAPI
+
+commands:
+  autosell:
+    description: "Usage: /autosell <on/off>"
+    aliases: [as]
+    permission: autosell.command
+
+permissions:
+  autosell.command:
+    description: "Gives the user the permission to use /autosell"
+    default: true
+...
