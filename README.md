@@ -16,6 +16,7 @@ This is my first PMMP plugin and I'm very proud of my work. I believe every serv
     1: "20"      //block id and price
     2:4: "24"    //block id with meta variant and its price
     
-
-# You can support my work by donating via PayPal: (paypal.me/abdu77)
+-------------------------------------------------------------------------
+You can support my work by donating via PayPal: (paypal.me/abdu77)
+-------------------------------------------------------------------------
 # Copyright (C) 2021 MCA7
