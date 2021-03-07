@@ -18,6 +18,9 @@ You can even set the world on which autosell can be used.
    Example:
     1: "20"      //block id and price
     2:4: "24"    //block id with meta variant and its price
+ 
+ # Permissions
+ Add `autosell.command` to the groups you want to give autosell to.
     
 -------------------------------------------------------------------------
 You can support my work by donating via PayPal: (paypal.me/abdu77)
