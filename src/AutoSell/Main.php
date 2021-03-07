@@ -86,8 +86,8 @@ class Main extends PluginBase implements Listener {
  public function onBreak(BlockBreakEvent $event) {
    if($this->db->get("autosell") == "on") {
      if($event->getPlayer()->getLevel()->getName() == $this->getConfig()->get("world")) {
-       $item = $event->getDrops()->getId();
-       $itemname = $event->getDrops()->getName();
+       $item = $event->getBlock()->getId();
+       $itemname = $event->getBlock()->getName();
        $con = $this->getConfig()->getAll();
        If(!(isset($con[$item]))) {
 
