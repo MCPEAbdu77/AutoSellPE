@@ -85,8 +85,11 @@ class Main extends PluginBase implements Listener {
  public function onBreak(BlockBreakEvent $event) {
    if($this->db->get("autosell") == "on") {
      if($event->getPlayer()->getLevel()->getName() == $this->getConfig()->get("world")) {
-       $item = $event->getBlock()->getId();
-       $itemname = $event->getBlock()->getName();
+       foreach($event->getDrops() as $drop) {
+       $item = $drop->getId();
+       $itemname = $drop->getName();
+       }
+       $count = $drop->getCount();
        $con = $this->getConfig()->getAll();
        If(!(isset($con[$item]))) {
 
@@ -94,12 +97,12 @@ class Main extends PluginBase implements Listener {
             return true;
     } else {
 
-      $price = $this->getConfig()->get($item);
+      $price = $this->getConfig()->get($item)*$count;
       $ply = $event->getPlayer()->getName();
       $event->getDrops();
       $event->setDrops([]);
       EconomyAPI::getInstance()->addMoney($ply, (int)$price);
-      $event->getPlayer()->sendTip(TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname . TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price);
+      $event->getPlayer()->sendTip(TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price);
       return true;
     }
 
