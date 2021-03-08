@@ -28,7 +28,6 @@ class Main extends PluginBase implements Listener {
          $this->saveDefaultConfig();
          $this->getResource("config.yml");
          $this->getServer()->getPluginManager()->registerEvents($this, $this);
-         $this->getLogger()->info(TextFormat::GREEN . "AutoSell by MCA7 Enabled!");
 
   }
   public function onDisable() {
