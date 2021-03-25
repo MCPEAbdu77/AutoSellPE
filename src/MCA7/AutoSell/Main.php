@@ -100,6 +100,7 @@ class Main extends PluginBase implements Listener {
 
       (int)$price = (int)$this->getConfig()->get($item);
       $ply = $event->getPlayer()->getName();
+      $event->getDrops();
       $event->setDrops([]);
       EconomyAPI::getInstance()->addMoney($ply, (int)$price);
       $event->getPlayer()->sendTip(TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price);
