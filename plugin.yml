@@ -16,7 +16,7 @@ commands:
 permissions:
   autosell.command:
     description: "Gives the user the permission to use /autosell"
-    default: true
+    default: op
     # change default to 'op' if you want it to work only for those
     # with the 'autosell.command' permission.
 ...
