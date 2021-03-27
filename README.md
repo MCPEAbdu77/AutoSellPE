@@ -25,4 +25,4 @@ You can even set the worlds on which autosell can be used.
  Add `autosell.command` to the groups you want to give. 
 
  - You can support my work by donating via PayPal: (paypal.me/abdu77)
-_* Copyright (C) 2021 MCA7
+ - Copyright (C) 2021 MCA7
