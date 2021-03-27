@@ -79,9 +79,16 @@ class Main extends PluginBase implements Listener {
   return true;
 }
 
- public function onBlockPickUp(BlockBreakEvent $event) {
-
-   $event->setDrops([]);
+ public function onBeforeSenpaiPicksUpDrops(BlockBreakEvent $event) {
+   if($event->getPlayer()->hasPermission("autosell.command")) {
+    if($this->db->get("autosell") == "on") {
+     if(!$event->getPlayer()->isCreative()) {
+      if(in_array($event->getPlayer()->getLevel()->getName(), $this->getConfig()->get("worlds"))) {
+        $event->setDrops([]);
+       }
+      }
+     }
+    }
  }
 
 /**
