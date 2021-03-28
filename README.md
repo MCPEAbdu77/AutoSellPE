@@ -26,7 +26,7 @@ You can even set the worlds on which autosell can be used.
 
  # Contact
 
- - You can support my work by donating via PayPal: (paypal.me/abdu77)
+ - You can support my work by donating via PayPal: (https://paypal.me/abdu77)
  - Email: abdu77mcpe@gmail.com 
  - Discord: MCA7#1245
  - Copyright (C) 2021 MCA7
