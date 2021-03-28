@@ -26,9 +26,7 @@ class Main extends PluginBase implements Listener {
          @mkdir($this->getDataFolder());
          @mkdir($this->getDataFolder() . "players/");
          $this->saveDefaultConfig();
-         $this->getResource("config.yml");
          $this->getServer()->getPluginManager()->registerEvents($this, $this);
-         fclose($this->getResource("config.yml"));
   }
 
   public function onJoin(PlayerJoinEvent $event) {
