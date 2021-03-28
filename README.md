@@ -1,4 +1,4 @@
-# AutoSell
+# Overview
 This is a bedrock pocketmine (PMMP) plugin which automatically sells the blocks while you mine. The blocks and their prices can be changed in the config.yml file.
 You can even set the worlds on which autosell can be used.
  - This plugin is compatible with AutoInv
