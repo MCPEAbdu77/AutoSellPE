@@ -1,4 +1,3 @@
-[![](https://poggit.pmmp.io/shield.state/AutoSellPE)](https://poggit.pmmp.io/p/AutoSellPE)
 <a href="https://poggit.pmmp.io/p/AutoSellPE"><img src="https://poggit.pmmp.io/shield.state/AutoSellPE"></a>
 # Overview
 A PocketMine-MP plugin which automatically sells the blocks that you mine. The blocks and their prices can be changed in the config.yml file.
