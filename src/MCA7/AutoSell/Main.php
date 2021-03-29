@@ -54,13 +54,11 @@ class Main extends PluginBase implements Listener {
            $this->db->save();
            $sender->sendMessage(TextFormat::GREEN . "Toggled AutoSell! (Enabled)");
            return true;
-           break;
            case "off":
              $this->db->set("autosell", "off");
              $this->db->save();
              $sender->sendMessage(TextFormat::RED . "Toggled AutoSell! (Disabled)");
              return true;
-             break;
            }
          } else {
            $sender->sendMessage(TextFormat::RED . "Usage: /autosell <on/off>");
@@ -131,6 +129,5 @@ class Main extends PluginBase implements Listener {
     }
    }
   }
-  return true;
  }
 }
