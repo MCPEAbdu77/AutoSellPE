@@ -35,7 +35,7 @@ class Main extends PluginBase implements Listener {
     if(!$this->db->getNested("$player")) {
       $this->db->setNested("$player", "off");
     }
-    //Thanks to OghuzkhanUmutlu for helping me out with this :]
+    //Thanks to OguzhanUmutlu for helping me out with this :]
   }
 
   public function onCommand(CommandSender $sender, Command $cmd, string $lable, array $args) : bool {
