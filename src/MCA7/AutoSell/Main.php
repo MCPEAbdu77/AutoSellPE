@@ -32,7 +32,6 @@ class Main extends PluginBase implements Listener {
 
     $player = $event->getPlayer()->getName();
     $this->db = new Config($this->getDataFolder() . "players.yml");
-    array_keys($this->db->getAll());
     if(!$this->db->getNested("$player")) {
       $this->db->setNested("$player", "off");
     }
