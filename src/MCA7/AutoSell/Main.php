@@ -118,7 +118,6 @@ class Main extends PluginBase implements Listener {
   }
  } else {
   $event->getPlayer()->sendTip(TextFormat::RED."You cannot AutoSell in Creative Mode!");
-  $event->setCancelled();
   return true;
  }
    } else {
