@@ -73,7 +73,7 @@ class Main extends PluginBase implements Listener {
      return true;
 }
 
- public function FukYoMom(BlockBreakEvent $event) {
+ public function onDropPickup(BlockBreakEvent $event) {
    $name = $event->getPlayer()->getName();
   if($event->getPlayer()->hasPermission("autosell.command")) {
     if($this->db->getNested("$name") == "on") {
