@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace MCA7\AutoSell;
-//By MCA7 [Copyright (C) 2021]
+//By MCA7#1245 
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
@@ -25,13 +25,13 @@ class Main extends PluginBase implements Listener {
 
          @mkdir($this->getDataFolder());
          $this->saveDefaultConfig();
+         $this->db = new Config($this->getDataFolder() . "players.yml");
          $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
 
   public function onJoin(PlayerJoinEvent $event) {
 
     $player = $event->getPlayer()->getName();
-    $this->db = new Config($this->getDataFolder() . "players.yml");
     if(!$this->db->getNested("$player")) {
       $this->db->setNested("$player", "off");
     }
@@ -73,7 +73,7 @@ class Main extends PluginBase implements Listener {
      return true;
 }
 
- public function onBeforeSenpaiPicksUpDrops(BlockBreakEvent $event) {
+ public function FukYoMom(BlockBreakEvent $event) {
    $name = $event->getPlayer()->getName();
   if($event->getPlayer()->hasPermission("autosell.command")) {
     if($this->db->getNested("$name") == "on") {
