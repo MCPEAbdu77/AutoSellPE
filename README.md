@@ -2,11 +2,13 @@
 A PocketMine-MP plugin which automatically sells the blocks that you mine. The blocks and their prices can be changed in the config.yml file.
 You can even set the worlds on which autosell can be used.
  - This plugin is compatible with AutoInv
- - This plugin depends on EconomyAPI (Support for CoinsSystem coming soon)
+ - This plugin depends on EconomyAPI
 
 # Commands: 
- /autosell <on/off> (/as for short form)
- Toggles autosell.
+ /autosell <on/off>
+   - Toggles autosell.
+ 
+ Alias: `/as <on/off>`
  
 # Config.yml
   You will be able to set a world's in which AutoSell only works on.
