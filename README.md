@@ -5,7 +5,7 @@ You can even set the worlds on which autosell can be used.
  - This plugin depends on EconomyAPI
 
 # Commands: 
- /autosell <on/off>
+  Usage: `/autosell <on/off>`
    - Toggles autosell.
  
  Alias: `/as <on/off>`
