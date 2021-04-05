@@ -78,6 +78,11 @@ class Main extends PluginBase implements Listener {
   if($event->getPlayer()->hasPermission("autosell.command")) {
     if($this->db->getNested("$name") == "on") {
       if(in_array($event->getPlayer()->getLevel()->getName(), $this->getConfig()->get("worlds"))) {
+        foreach($event->getDrops() as $drop) {
+          $item = $drop->getId();
+          $itemname = $drop->getName();
+          $count = $drop->getCount();
+        }
         $event->setDrops([]);
       }
     }
@@ -94,9 +99,7 @@ class Main extends PluginBase implements Listener {
      if(!$event->isCancelled()) {
        if(!$event->getPlayer()->isCreative()) {
      if(in_array($event->getPlayer()->getLevel()->getName(), $this->getConfig()->get("worlds"))) {
-
-        $item = $event->getBlock()->getId();
-        $itemname = $event->getBlock()->getName();
+       
         $con = $this->getConfig()->getAll();
 
        If(!(isset($con[$item]))) {
@@ -106,7 +109,7 @@ class Main extends PluginBase implements Listener {
 
     } else {
 
-      (int)$price = (int)$this->getConfig()->get($item);
+      (int)$price = (int)$this->getConfig()->get($item)*(int)$count;
       $ply = $event->getPlayer()->getName();
       EconomyAPI::getInstance()->addMoney($ply, (int)$price);
       $event->getPlayer()->sendTip(TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price);
