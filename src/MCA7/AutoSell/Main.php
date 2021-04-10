@@ -78,7 +78,9 @@ class Main extends PluginBase implements Listener {
   if($event->getPlayer()->hasPermission("autosell.command")) {
     if($this->db->getNested("$name") == "on") {
       if(in_array($event->getPlayer()->getLevel()->getName(), $this->getConfig()->get("worlds"))) {
-        $event->setDrops([]);
+        if(isset($con[$item])) {
+          $event->setDrops([]);
+        }
       }
     }
   }
