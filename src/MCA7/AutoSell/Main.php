@@ -75,6 +75,8 @@ class Main extends PluginBase implements Listener {
 
  public function onDropPickup(BlockBreakEvent $event) {
    $name = $event->getPlayer()->getName();
+   $con = $this->getConfig()->getAll();
+   $item = $event->getBlock()->getId();
   if($event->getPlayer()->hasPermission("autosell.command")) {
     if($this->db->getNested("$name") == "on") {
       if(in_array($event->getPlayer()->getLevel()->getName(), $this->getConfig()->get("worlds"))) {
