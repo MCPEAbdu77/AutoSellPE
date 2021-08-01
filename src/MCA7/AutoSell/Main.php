@@ -32,8 +32,8 @@ class Main extends PluginBase implements Listener {
   public function onJoin(PlayerJoinEvent $event) {
 
     $player = $event->getPlayer()->getName();
-    if(!$this->db->getNested("$player")) {
-      $this->db->setNested("$player", "off");
+    if(!$this->db->getNested($player)) {
+      $this->db->setNested($player, "off");
     }
     //Thanks to OguzhanUmutlu for helping me out with this :]
   }
@@ -51,12 +51,12 @@ class Main extends PluginBase implements Listener {
 
          switch(strtolower($args[0])) {
            case "on":
-           $this->db->setNested("$player", "on");
+           $this->db->setNested($player, "on");
            $this->db->save();
            $sender->sendMessage($prefix . " " . TextFormat::GREEN . "Toggled AutoSell! (Enabled)");
            return true;
            case "off":
-             $this->db->setNested("$player", "off");
+             $this->db->setNested($player, "off");
              $this->db->save();
              $sender->sendMessage($prefix . " " . TextFormat::RED . "Toggled AutoSell! (Disabled)");
              return true;
@@ -79,7 +79,7 @@ class Main extends PluginBase implements Listener {
    $con = $this->getConfig()->getAll();
    $item = $event->getBlock()->getId();
   if($event->getPlayer()->hasPermission("autosell.command")) {
-    if($this->db->getNested("$name") == "on") {
+    if($this->db->getNested($name) == "on") {
       if(in_array($event->getPlayer()->getLevel()->getName(), $this->getConfig()->get("worlds"))) {
         if(isset($con[$item])) {
           $event->setDrops([]);
@@ -95,7 +95,7 @@ class Main extends PluginBase implements Listener {
  public function onBreak(BlockBreakEvent $event) {
    $name = $event->getPlayer()->getName();
   if($event->getPlayer()->hasPermission("autosell.command")){
-   if($this->db->getNested("$name") == "on") {
+   if($this->db->getNested($name) == "on") {
      if(!$event->isCancelled()) {
        if(!$event->getPlayer()->isCreative()) {
      if(in_array($event->getPlayer()->getLevel()->getName(), $this->getConfig()->get("worlds"))) {
@@ -123,7 +123,6 @@ class Main extends PluginBase implements Listener {
   }
  } else {
   $event->getPlayer()->sendTip(TextFormat::RED."You cannot AutoSell in Creative Mode!");
-  // something used to be here
   return true;
  }
    } else {
