@@ -4,6 +4,9 @@
 # / ___ \  | |_| | | |_  | (_) |  ___) | |  __/ | | | | |  __/  | |___  
 #/_/   \_\  \__,_|  \__|  \___/  |____/   \___| |_| |_| |_|     |_____|
 
+# Prefix: (use § for color coding)
+prefix: "§6AutoSell§aPE§7:"
+
 # Name of the world autosell works on.
 # Example:
 # worlds:
