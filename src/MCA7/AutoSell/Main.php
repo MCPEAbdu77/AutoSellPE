@@ -39,7 +39,8 @@ class Main extends PluginBase implements Listener {
   }
 
   public function onCommand(CommandSender $sender, Command $cmd, string $lable, array $args) : bool {
-
+    
+    $prefix = $this->getConfig()->get("prefix");
     switch($cmd->getName()){
       case "autosell":
       $player = $sender->getName();
@@ -52,22 +53,22 @@ class Main extends PluginBase implements Listener {
            case "on":
            $this->db->setNested("$player", "on");
            $this->db->save();
-           $sender->sendMessage(TextFormat::GREEN . "Toggled AutoSell! (Enabled)");
+           $sender->sendMessage($prefix . " " . TextFormat::GREEN . "Toggled AutoSell! (Enabled)");
            return true;
            case "off":
              $this->db->setNested("$player", "off");
              $this->db->save();
-             $sender->sendMessage(TextFormat::RED . "Toggled AutoSell! (Disabled)");
+             $sender->sendMessage($prefix . " " . TextFormat::RED . "Toggled AutoSell! (Disabled)");
              return true;
            }
          } else {
-           $sender->sendMessage(TextFormat::RED . "Usage: /autosell <on/off>");
+           $sender->sendMessage($prefix . " " . TextFormat::RED . "Usage: /autosell <on/off>");
          }
          }  else {
-           $sender->sendMessage(TextFormat::RED . "You can only use this command in-game!");
+           $sender->sendMessage($prefix . " " . TextFormat::RED . "You can only use this command in-game!");
          }
        } else {
-         $sender->sendMessage(TextFormat::RED . "You do not have the permission to use this command!");
+         $sender->sendMessage($prefix . " " . TextFormat::RED . "You do not have the permission to use this command!");
        }
      }
      return true;
