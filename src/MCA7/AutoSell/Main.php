@@ -21,7 +21,7 @@ use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
 
-  public function onEnable() {
+  public function onEnable():void {
 
          @mkdir($this->getDataFolder());
          $this->saveDefaultConfig();
@@ -29,7 +29,7 @@ class Main extends PluginBase implements Listener {
          $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
 
-  public function onJoin(PlayerJoinEvent $event) {
+  public function onJoin(PlayerJoinEvent $event):void {
 
     $player = $event->getPlayer()->getName();
     if(!$this->db->getNested($player)) {
@@ -74,7 +74,7 @@ class Main extends PluginBase implements Listener {
      return true;
 }
 
- public function onDropPickup(BlockBreakEvent $event) {
+ public function onDropPickup(BlockBreakEvent $event):void {
    $name = $event->getPlayer()->getName();
    $con = $this->getConfig()->getAll();
    $item = $event->getBlock()->getId();
@@ -92,7 +92,7 @@ class Main extends PluginBase implements Listener {
 /**
  * @priority MONITOR
  */
- public function onBreak(BlockBreakEvent $event) {
+ public function onBreak(BlockBreakEvent $event):void {
    $name = $event->getPlayer()->getName();
   if($event->getPlayer()->hasPermission("autosell.command")){
    if($this->db->getNested($name) == "on") {
