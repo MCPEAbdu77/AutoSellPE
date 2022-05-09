@@ -2,9 +2,9 @@
 # AutoSell by MCA7#1245
 name: AutoSell
 main: MCA7\AutoSell\Main
-api: 3.18.0
+api: 4.0.0
 load: POSTWORLD
-version: 2.2.1
+version: 3.0.0
 depend: EconomyAPI
 
 commands:
