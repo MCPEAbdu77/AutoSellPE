@@ -23,8 +23,6 @@ class Main extends PluginBase implements Listener {
 
   public function onEnable():void {
 
-         @mkdir($this->getDataFolder());
-         $this->saveDefaultConfig();
          $this->db = new Config($this->getDataFolder() . "players.yml");
          $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
