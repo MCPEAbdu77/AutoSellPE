@@ -4,8 +4,8 @@ main: MCA7\AutoSell\Main
 api: 4.0.0
 load: POSTWORLD
 version: 3.1.1
-website: https://github.com/MCPEAbdu77
-depend: EconomyAPI
+website: https://github.com/MCPEAbdu77/AutoSell
+depend: BedrockEconomy
 
 commands:
   autosell:

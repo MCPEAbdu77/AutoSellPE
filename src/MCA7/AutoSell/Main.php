@@ -9,13 +9,13 @@ use pocketmine\Server;
 use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use onebone\economyapi\EconomyAPI;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\block\Block;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\player\Player;
+use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
 
 class Main extends PluginBase implements Listener 
 {
@@ -139,9 +139,9 @@ class Main extends PluginBase implements Listener
                 } else {
 
                     $price = (int)$this->getConfig()->get($item);
-                    EconomyAPI::getInstance()->addMoney($name, $price);
+                    BedrockEconomyAPI::legacy()->addToPlayerBalance($name, $price);
                     $player->sendTip(
-                    TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price
+                        TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price
                     );
                     $event->setDrops([]);
                                     
