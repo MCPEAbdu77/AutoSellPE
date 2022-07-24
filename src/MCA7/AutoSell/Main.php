@@ -32,12 +32,12 @@ class Main extends PluginBase implements Listener
 
     public function onLoad() : void 
     {
-        if(!$this->getConfig()->get('ver') === '1.0') {
+        if(!($this->getConfig()->get('ver')) || $this->getConfig()->get('ver') !== '1.0') {
             $this->getServer()->getLogger()->debug(
                 TextFormat::RED . 'Invalid Config version - Update plugin or delete the old config file! Disabling plugin.'
             );
-            $this->getServer()->getPluginManager()->getPlugin()->disable();
-         }
+            $this->getServer()->getPluginManager()->disablePlugin($this);
+         } 
     }
 
 
