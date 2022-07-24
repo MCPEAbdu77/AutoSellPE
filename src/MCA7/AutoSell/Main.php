@@ -30,6 +30,17 @@ class Main extends PluginBase implements Listener
     }
 
 
+    public function onLoad() : void 
+    {
+        if(!$this->getConfig()->get('ver') === '1.0') {
+            $this->getServer()->getLogger()->debug(
+                TextFormat::RED . 'Invalid Config version - Update plugin or delete the old config file! Disabling plugin.'
+            );
+            $this->getServer()->getPluginManager()->getPlugin()->disable();
+         }
+    }
+
+
     public function onJoin(PlayerJoinEvent $event) : void 
     {
 
@@ -121,20 +132,20 @@ class Main extends PluginBase implements Listener
             $item = $event->getBlock()->getId();
             $itemname = $event->getBlock()->getName();
 
-                if(!(isset($con[$item]))) {
+            if(!(isset($con[$item]))) {
 
-                    $player->sendTip(TextFormat::RED . "This block cannot be AutoSold!");
+                $player->sendTip(TextFormat::RED . "This block cannot be AutoSold!");
 
-                    } else {
+                } else {
 
-                        $price = (int)$this->getConfig()->get($item);
-                        EconomyAPI::getInstance()->addMoney($name, $price);
-                        $player->sendTip(
-                            TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price
-                        );
-                        $event->setDrops([]);
+                    $price = (int)$this->getConfig()->get($item);
+                    EconomyAPI::getInstance()->addMoney($name, $price);
+                    $player->sendTip(
+                    TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price
+                    );
+                    $event->setDrops([]);
                                     
-                    }
+                }
 
 
       }
