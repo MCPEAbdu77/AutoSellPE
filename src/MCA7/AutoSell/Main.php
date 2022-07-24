@@ -23,14 +23,14 @@ class Main extends PluginBase implements Listener
 
     private $db;
 
-    public function onEnable():void 
+    public function onEnable() : void 
     {
          $this->db = new Config($this->getDataFolder() . "players.yml");
          $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
 
-    public function onJoin(PlayerJoinEvent $event):void 
+    public function onJoin(PlayerJoinEvent $event) : void 
     {
 
         $player = $event->getPlayer()->getName();
@@ -55,13 +55,22 @@ class Main extends PluginBase implements Listener
 
             $player = $sender->getName();
 
-            if($sender->hasPermission("autosell.command")){
+            if(!($sender->hasPermission("autosell.command"))) {
+                $sender->sendMessage($prefix . " " . TextFormat::RED . "You do not have the permission to use this command!");
+                return true;
+            }
 
-              if($sender instanceof Player){
+            if(!($sender instanceof Player)) {
+                $sender->sendMessage($prefix . " " . TextFormat::RED . "You can only use this command in-game!");
+                return true;
+            }
 
-                if(isset($args[0])) {
+            if(!(isset($args[0]))) {
+                $sender->sendMessage($prefix . " " . TextFormat::RED . "Usage: /autosell <on/off>");
+                return true;
+            }
 
-                   switch(strtolower($args[0])) 
+                switch(strtolower($args[0])) 
                    {
                       case "on":
 
@@ -78,47 +87,9 @@ class Main extends PluginBase implements Listener
                          return true;
                     }
 
-                } else {
-
-                      $sender->sendMessage($prefix . " " . TextFormat::RED . "Usage: /autosell <on/off>");
-                }
-
-              }  else {
-
-                    $sender->sendMessage($prefix . " " . TextFormat::RED . "You can only use this command in-game!");
-              }
-
-            } else {
-
-                 $sender->sendMessage($prefix . " " . TextFormat::RED . "You do not have the permission to use this command!");
-            }
       }
 
       return true;
-
-    }
-
-
-    public function onDropPickup(BlockBreakEvent $event):void 
-    {
-        $name = $event->getPlayer()->getName();
-        $con = $this->getConfig()->getAll();
-        $item = $event->getBlock()->getId();
-
-        if($event->getPlayer()->hasPermission("autosell.command")) {
-          if($this->db->getNested($name) == "on") {
-             if(in_array($event->getPlayer()->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
-                if(isset($con[$item])) {
-
-                    $event->setDrops([]);
-
-                     }
-
-                }
-
-            }
-
-        }
 
     }
 
@@ -127,21 +98,22 @@ class Main extends PluginBase implements Listener
    * @priority MONITOR
    */
 
-    public function onBreak(BlockBreakEvent $event):void 
+    public function onBreak(BlockBreakEvent $event) : void 
     {
+        $player = $event->getPlayer();
         $name = $event->getPlayer()->getName();
-        if(!($event->getPlayer()->hasPermission("autosell.command"))) return;
+        if(!($player->hasPermission("autosell.command"))) return;
         if($this->db->getNested($name) == "off") return;
         if($event->isCancelled()) {
-            $event->getPlayer()->sendTip(TextFormat::RED . "You cannot AutoSell protected blocks!");
+            $player->sendTip(TextFormat::RED . "You cannot AutoSell protected blocks!");
             return;
         }
-        if(!$event->getPlayer()->isCreative()) {
-            $event->getPlayer()->sendTip(TextFormat::RED."You cannot AutoSell in Creative Mode!");
+        if($player->isCreative()) {
+            $player->sendTip(TextFormat::RED."You cannot AutoSell in Creative Mode!");
             return;
         }
-        if(!in_array($event->getPlayer()->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
-            $event->getPlayer()->sendTip(TextFormat::RED . "You cannot AutoSell in this world!");
+        if(!in_array($player->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
+            $player->sendTip(TextFormat::RED . "You cannot AutoSell in this world!");
             return;
         }
        
@@ -151,16 +123,16 @@ class Main extends PluginBase implements Listener
 
                 if(!(isset($con[$item]))) {
 
-                    $event->getPlayer()->sendTip(TextFormat::RED . "This block cannot be AutoSold!");
+                    $player->sendTip(TextFormat::RED . "This block cannot be AutoSold!");
 
                     } else {
 
                         $price = (int)$this->getConfig()->get($item);
-                        $ply = $event->getPlayer()->getName();
-                        EconomyAPI::getInstance()->addMoney($ply, $price);
-                        $event->getPlayer()->sendTip(
+                        EconomyAPI::getInstance()->addMoney($name, $price);
+                        $player->sendTip(
                             TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price
                         );
+                        $event->setDrops([]);
                                     
                     }
 
