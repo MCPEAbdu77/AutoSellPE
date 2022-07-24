@@ -17,7 +17,8 @@ use pocketmine\block\Block;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\player\Player;
 
-class Main extends PluginBase implements Listener {
+class Main extends PluginBase implements Listener 
+{
 
 
     private $db;
@@ -49,9 +50,8 @@ class Main extends PluginBase implements Listener {
     
        $prefix = $this->getConfig()->get("prefix");
 
-      switch($cmd->getName())
+      if($cmd->getName() === 'autosell')
       {
-         case "autosell":
 
             $player = $sender->getName();
 
@@ -106,16 +106,13 @@ class Main extends PluginBase implements Listener {
         $item = $event->getBlock()->getId();
 
         if($event->getPlayer()->hasPermission("autosell.command")) {
-
           if($this->db->getNested($name) == "on") {
-
              if(in_array($event->getPlayer()->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
-
                 if(isset($con[$item])) {
 
                     $event->setDrops([]);
 
-                  }
+                     }
 
                 }
 
@@ -126,59 +123,47 @@ class Main extends PluginBase implements Listener {
     }
 
 
-    /**
-     * @priority MONITOR
-     * 
-     */
-
+  /**
+   * @priority MONITOR
+   */
 
     public function onBreak(BlockBreakEvent $event):void 
     {
-          $name = $event->getPlayer()->getName();
-          if($event->getPlayer()->hasPermission("autosell.command")){
-              if($this->db->getNested($name) == "on") {
-                  if(!$event->isCancelled()) {
-                      if(!$event->getPlayer()->isCreative()) {
-                          if(in_array($event->getPlayer()->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
+        $name = $event->getPlayer()->getName();
+        if(!($event->getPlayer()->hasPermission("autosell.command"))) return;
+        if($this->db->getNested($name) == "off") return;
+        if($event->isCancelled()) {
+            $event->getPlayer()->sendTip(TextFormat::RED . "You cannot AutoSell protected blocks!");
+            return;
+        }
+        if(!$event->getPlayer()->isCreative()) {
+            $event->getPlayer()->sendTip(TextFormat::RED."You cannot AutoSell in Creative Mode!");
+            return;
+        }
+        if(!in_array($event->getPlayer()->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
+            $event->getPlayer()->sendTip(TextFormat::RED . "You cannot AutoSell in this world!");
+            return;
+        }
        
-                                $con = $this->getConfig()->getAll();
-                                $item = $event->getBlock()->getId();
-                                $itemname = $event->getBlock()->getName();
+            $con = $this->getConfig()->getAll();
+            $item = $event->getBlock()->getId();
+            $itemname = $event->getBlock()->getName();
 
-                                if(!(isset($con[$item]))) {
+                if(!(isset($con[$item]))) {
 
-                                    $event->getPlayer()->sendTip(TextFormat::RED . "This block cannot be AutoSold!");
+                    $event->getPlayer()->sendTip(TextFormat::RED . "This block cannot be AutoSold!");
 
-                                } else {
+                    } else {
 
-                                      $price = (int)$this->getConfig()->get($item);
-                                      $ply = $event->getPlayer()->getName();
-                                      EconomyAPI::getInstance()->addMoney($ply, (int)$price);
-                                      $event->getPlayer()->sendTip(TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price);
+                        $price = (int)$this->getConfig()->get($item);
+                        $ply = $event->getPlayer()->getName();
+                        EconomyAPI::getInstance()->addMoney($ply, $price);
+                        $event->getPlayer()->sendTip(
+                            TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname ."(s)". TextFormat::GREEN ." for" . TextFormat::YELLOW ." $" . $price
+                        );
                                     
-                                  }
-
-                            } else {
-
-                                  $event->getPlayer()->sendTip(TextFormat::RED . "You cannot AutoSell in this world!");
-    
-                              }
-
-                        } else {
-
-                              $event->getPlayer()->sendTip(TextFormat::RED."You cannot AutoSell in Creative Mode!");
-  
-                          }
-
-                  } else {
-
-                        $event->getPlayer()->sendTip(TextFormat::RED . "You cannot AutoSell protected blocks!");
-      
                     }
 
-                }
-
-            }
 
       }
 
