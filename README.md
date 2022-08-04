@@ -10,10 +10,18 @@ You can even set the worlds on which autosell can be used.
  - This plugin depends on BedrockEconomy
 
 # Commands: 
-  Usage: `/autosell <on/off>`
-   - Toggles autosell.
+  Usage: `/autosell < on | off | add | remove | view >`
+   
+   | Command | Sub-commands | Description |
+   | --------|-------------|-------------|
+   | autosell | on | Turns on autosell |
+   | | off | Turns off autosell |
+   | | add | Adds the item the user is holding to the autosell price list. Proper usage: `/autosell add {price}` {price} should be a integer or float. For updating prices repeat with different price
+   | | remove | Removes the item the user is holding from the autosell price list
+   | | view | Lists the prices of all blocks/items added to the autosell price list
+   
  
- Alias: `/as <on/off>`
+ Alias: `/as`
  
 # Config.yml
   You will be able to set a world's in which AutoSell only works on.
@@ -24,13 +32,19 @@ You can even set the worlds on which autosell can be used.
    - "world3"
   
   To set Block and their prices: 
- - BlockID: "price"
-  - Example:
-   - 1: "5"     // Block ID with price
-   - 17:1: "30" // Block ID with Meta variant and it's price
+  Hold the item or block in hand, use `/autosell add {price}`
+  Example: 
+  Holding a cobblestone block and using `/autosell add 1`
+  will sell cobblestone for $1 during mining.
  
  # Permissions
- Add `autosell.command` to the groups you want to give. 
+ 
+ | Permission | Description |
+ |------------|-------------|
+ | `autosell.command` | Grants the user/group the permission to toggle autosell ON or OFF - Restricted to OP's by default |
+ | `autosell.command.add` | Grants the user/group the permission to add or update block prices - Restricted to OP's by default |
+ | `autosell.command.remove` | Grants the user/group the permission to remove blocks from autosell - Restricted to OP's by default |
+ | `autosell.command.view` | Grants the user/group the permission to view/list all the prices for the autoselling blocks - Granted to everyone by default |
 
  # Contact
 
