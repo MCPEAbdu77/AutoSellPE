@@ -1,22 +1,28 @@
 ---
 name: AutoSell
 main: MCA7\AutoSell\Main
-api: 4.0.0
+api: 5.0.0
 load: POSTWORLD
-version: 3.1.1
-website: https://github.com/MCPEAbdu77/AutoSell
+version: 3.1.2
+website: https://github.com/MCPEAbdu77/AutoSellPE
 depend: BedrockEconomy
 
 commands:
   autosell:
-    description: "Usage: /autosell <on/off>"
-    aliases: [as]
+    description: "Usage: /autosell <on/off/add>"
+    aliases: [ as ]
     permission: autosell.command
 
 permissions:
   autosell.command:
-    description: "Gives the user the permission to use /autosell"
+    description: "Gives the user the permission to use /autosell < ON / OFF >"
     default: op
-    # change default to 'op' if you want it to work only for those
-    # with the 'autosell.command' permission.
+  autosell.command.add:
+    default: op
+  autosell.command.remove:
+    default: op
+  autosell.command.view:
+    default: true
+    # op - allow only users with 'autosell.command' to use AutoSell
+    # true - allow everyone by default
 ...
