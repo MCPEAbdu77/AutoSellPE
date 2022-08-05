@@ -9,7 +9,7 @@ depend: BedrockEconomy
 
 commands:
   autosell:
-    description: "Usage: /autosell <on/off/add>"
+    description: "/autosell < on | off | add | remove | view >"
     aliases: [ as ]
     permission: autosell.command
 
