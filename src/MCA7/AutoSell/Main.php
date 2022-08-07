@@ -215,7 +215,7 @@ class Main extends PluginBase implements Listener
 	public function onBreak(BlockBreakEvent $event): void
 	{
 		$player = $event->getPlayer();
-		$name = $event->getPlayer()->getName();
+		//$name = $event->getPlayer()->getName();
 		if (!($player->hasPermission("autosell.command"))) return;
 		if ($this->db->getNested($name) == "off") return;
 		if ($event->isCancelled()) {
@@ -243,7 +243,7 @@ class Main extends PluginBase implements Listener
 			$player->sendTip(
 				TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname . "x" . $count . TextFormat::GREEN . " for" . TextFormat::YELLOW . " $" . $price
 			);
-			$this->getEconomyProvider()->addToMoney($name, $price, [
+			$this->getEconomyProvider()->addToMoney($player, $price, [
 				"item" => $itemname,
 				"amount" => $count,
 			]);
