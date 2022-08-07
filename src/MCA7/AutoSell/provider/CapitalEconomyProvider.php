@@ -18,7 +18,7 @@ class CapitalEconomyProvider extends EconomyProvider
     public function __construct()
     {
         Capital::api("0.1.0", function(Capital $api) {
-            $this->selector = $api->completeConfig(SellMe::getInstance()->getConfig()->getNested("capital-settings.selector"));
+            $this->selector = $api->completeConfig(Main::getInstance()->getConfig()->getNested("capital-settings.selector"));
         });
     }
 
@@ -41,7 +41,7 @@ class CapitalEconomyProvider extends EconomyProvider
             {
                 try {
                     yield from $api->addMoney(
-                        "SellMe",
+                        "AutoSellPE",
                         $player,
                         $this->selector,
                         $amount,
