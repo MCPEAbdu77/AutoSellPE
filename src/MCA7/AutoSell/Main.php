@@ -72,14 +72,14 @@ class Main extends PluginBase implements Listener
 
 	private function yeet(string $name): void
     	{
-        $this->getServer()->getLogger()->error("The respected class for the Economy Provider $name has not been found");
-        $this->getServer()->getPluginManager()->disablePlugin($this);
+        	$this->getServer()->getLogger()->error("The respected class for the Economy Provider $name has not been found");
+        	$this->getServer()->getPluginManager()->disablePlugin($this);
     	}
 
 
 	public function onLoad(): void
 	{
-		if ($this->getConfig()->get('ver') === false || $this->getConfig()->get('ver') !== 1.1) {
+		if ($this->getConfig()->get('ver') === false || $this->getConfig()->get('ver') !== 1.2) {
 			$this->saveDefaultConfig();
 			$this->getServer()->getLogger()->critical(
 				TextFormat::RED . 'Invalid Config version - Update plugin or delete the old config file! Disabling plugin.'
