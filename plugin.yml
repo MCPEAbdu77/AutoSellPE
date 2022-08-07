@@ -1,11 +1,14 @@
 ---
 name: AutoSell
 main: MCA7\AutoSell\Main
+author: MCA7
 api: 5.0.0
-load: POSTWORLD
 version: 3.1.2
 website: https://github.com/MCPEAbdu77/AutoSellPE
-depend: BedrockEconomy
+softdepend:
+  - BedrockEconomy
+  - EconomyAPI
+  - Capital
 
 commands:
   autosell:

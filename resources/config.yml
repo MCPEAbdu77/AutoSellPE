@@ -9,7 +9,7 @@
 # Apache-2.0 (C) 2021
 
 # Don't change this shit
-ver: 1.1
+ver: 1.2
 
 # Prefix: (use § for color coding)
 prefix: "§6AutoSell§aPE§7:"
@@ -24,6 +24,18 @@ worlds:
   - "world"
   - "world2"
   - "world3"
+
+# Economy provider
+# the possible values for this currently are
+# 1. BedrockEconomy
+# 2. Capital
+# 3. EconomyAPI
+economy-provider: BedrockEconomy
+
+# DO NOT TOUCH IF YOU DONT KNOW WHAT YOU ARE DOING
+# BY DEFAULT SELECTOR ENTRY IS EMPTY
+capital-settings:
+  selector:
 
 # New system for adding/removing blocks/items for AutoSell
 # has been changed to in-game configeration.

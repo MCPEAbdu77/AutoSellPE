@@ -4,10 +4,12 @@
 <a href="https://poggit.pmmp.io/p/AutoSellPE"><img src="https://poggit.pmmp.io/shield.dl.total/AutoSellPE"></a>
 <a href="https://poggit.pmmp.io/p/AutoSellPE"><img src="https://poggit.pmmp.io/shield.dl/AutoSellPE"></a>
 
-A PocketMine-MP plugin which automatically sells the blocks that you mine. The blocks and their prices can be changed in the config.yml file.
+<b>Github version only supports PM5 / API 5</b>
+
+A PocketMine-MP plugin which automatically sells the blocks that you mine. The blocks and their prices can be changed in the config.yml file. 
 You can even set the worlds on which autosell can be used.
  - This plugin is compatible with AutoInv
- - This plugin depends on BedrockEconomy
+ - This plugin supports BedrockEconomy, Capital & EconomyAPI
 
 # Commands: 
   Usage: `/autosell < on | off | add | remove | view >`
@@ -24,18 +26,58 @@ You can even set the worlds on which autosell can be used.
  Alias: `/as`
  
 # Config.yml
-  You will be able to set a world's in which AutoSell only works on.
-  
- - worlds:
-   - "world1"
-   - "world2"
-   - "world3"
-  
-  To set Block and their prices: 
-  Hold the item or block in hand, use `/autosell add {price}`
-  Example: 
-  Holding a cobblestone block and using `/autosell add 1`
-  will sell cobblestone for $1 during mining.
+```
+#     _              _             ____           _   _   ____    _____
+#    / \     _   _  | |_    ___   / ___|    ___  | | | | |  _ \  | ____|
+#   / _ \   | | | | | __|  / _ \  \___ \   / _ \ | | | | | |_) | |  _|
+#  / ___ \  | |_| | | |_  | (_) |  ___) | |  __/ | | | | |  __/  | |___
+# /_/   \_\  \__,_|  \__|  \___/  |____/   \___| |_| |_| |_|     |_____|
+#
+# Author: MCA7
+# Website: https://github.com/MCPEAbdu77/AutoSellPE
+# Apache-2.0 (C) 2021
+
+# Don't change this shit
+ver: 1.2
+
+# Prefix: (use § for color coding)
+prefix: "§6AutoSell§aPE§7:"
+
+# Name of the world autosell works on.
+# Example:
+# worlds:
+#  - "world1"
+#  - "world2"
+
+worlds:
+  - "world"
+  - "world2"
+  - "world3"
+
+# Economy provider
+# the possible values for this currently are
+# 1. BedrockEconomy
+# 2. Capital
+# 3. EconomyAPI
+economy-provider: BedrockEconomy
+
+# DO NOT TOUCH IF YOU DONT KNOW WHAT YOU ARE DOING
+# BY DEFAULT SELECTOR ENTRY IS EMPTY
+capital-settings:
+  selector:
+
+# New system for adding/removing blocks/items for AutoSell
+# has been changed to in-game configeration.
+# Hold the block/item and use the command,
+# /autosell add <price>
+# Example:
+# Hold stone and then use
+# /autosell add 10
+# This will autosell COBBLESTONE block for $10
+# during mining.
+# Likewise for removing, hold the block and
+# use /autosell remove
+```
  
  # Permissions
  

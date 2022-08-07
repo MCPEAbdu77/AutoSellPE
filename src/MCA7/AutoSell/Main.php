@@ -13,8 +13,15 @@ use pocketmine\utils\TextFormat;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\player\Player;
-use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
+use MCA7\AutoSell\provider\BedrockEconomyProvider;
+use MCA7\AutoSell\provider\CapitalEconomyProvider;
+use MCA7\AutoSell\provider\EconomyAPIProvider;
+use MCA7\AutoSell\provider\EconomyProvider;
 
+/*	
+	Credits to cosmicnebula200 for multiple economy provider integration 
+	https://github.com/cosmicnebula200/SellMe
+*/
 
 class Main extends PluginBase implements Listener
 {
@@ -23,13 +30,51 @@ class Main extends PluginBase implements Listener
 	private $prices;
 	private $blocks = [];
 
+	/** @var EconomyProvider|null */
+	private ?EconomyProvider $economyProvider;
+
 	public function onEnable(): void
 	{
 		$this->db = new Config($this->getDataFolder() . "players.yml");
 		$this->prices = new Config($this->getDataFolder() . "prices.yml");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->blocks = $this->prices->getAll();
+		$this->economyProvider = match (strtolower($this->getConfig()->get('economy-provider')))
+        {
+            "bedrockeconomy" => new BedrockEconomyProvider(),
+            "capital" => new CapitalEconomyProvider(),
+            "economyapi" => new EconomyAPIProvider(),
+            default => null
+        };
+
+        if ($this->economyProvider == null)
+        {
+            $this->yeet($this->getConfig()->get('economy-provider'));
+            return;
+        }
+        if (!$this->economyProvider->checkClass())
+        {
+            $this->yeet($this->economyProvider->getName());
+            return;
+        }
 	}
+
+
+	/**
+     * @return EconomyProvider|null
+     */
+
+    public function getEconomyProvider(): ?EconomyProvider
+    {
+        return $this->economyProvider;
+    }
+
+
+	private function yeet(string $name): void
+    {
+        $this->getServer()->getLogger()->error("The respected class for the Economy Provider $name has not been found");
+        $this->getServer()->getPluginManager()->disablePlugin($this);
+    }
 
 
 	public function onLoad(): void
@@ -200,7 +245,11 @@ class Main extends PluginBase implements Listener
 			$player->sendTip(
 				TextFormat::GREEN . "Sold" . TextFormat::AQUA . " " . $itemname . "x" . $count . TextFormat::GREEN . " for" . TextFormat::YELLOW . " $" . $price
 			);
-			BedrockEconomyAPI::legacy()->addToPlayerBalance($name, $price);
+			$this->getEconomyProvider()->addToMoney($name, $price, [
+				"item" => $itemname,
+				"amount" => $count,
+			]);
+			
 		}
 
 	}
