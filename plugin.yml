@@ -26,6 +26,4 @@ permissions:
     default: op
   autosell.command.view:
     default: true
-    # op - allow only users with 'autosell.command' to use AutoSell
-    # true - allow everyone by default
 ...
