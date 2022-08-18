@@ -71,10 +71,10 @@ capital-settings:
 # Hold the block/item and use the command,
 # /autosell add <price>
 # Example:
-# Hold stone and then use
+# Hold cobblestone block and then use
 # /autosell add 10
-# This will autosell COBBLESTONE block for $10
-# during mining.
+# This will autosell cobblestone block for $10
+# when stone is mined.
 # Likewise for removing, hold the block and
 # use /autosell remove
 ```
