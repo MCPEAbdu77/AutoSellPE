@@ -225,7 +225,7 @@ class Main extends PluginBase implements Listener
 		$player = $event->getPlayer();
 		$name = $event->getPlayer()->getName();
 		if (!($player->hasPermission("autosell.command"))) return;
-		if (!$this->players[$name]) return;
+		if (!$this->players[$name] || $event->getDrops() === []) return;
 		if ($event->isCancelled()) {
 			$player->sendTip(TextFormat::RED . "You cannot AutoSell protected blocks!");
 			return;

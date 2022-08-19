@@ -2,8 +2,8 @@
 name: AutoSell
 main: MCA7\AutoSell\Main
 author: MCA7
-api: 5.0.0
-version: 4.0.0
+api: 4.0.0
+version: 3.2.0
 website: https://github.com/MCPEAbdu77/AutoSellPE
 softdepend:
   - BedrockEconomy
