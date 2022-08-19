@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener
 		$this->con->getAllPlayers();
 		$this->economyProvider = match (strtolower($this->getConfig()->get('economy-provider'))) {
 			"bedrockeconomy" => new BedrockEconomyProvider(),
-			"capital" => new CapitalEconomyProvider(),
+			"capital" => new CapitalEconomyProvider($this),
 			"economyapi" => new EconomyAPIProvider(),
 			default => null
 		};
@@ -167,7 +167,7 @@ class Main extends PluginBase implements Listener
 					}
 					$check = $sender->getInventory()->getItemInHand();
 					$block = $sender->getInventory()->getItemInHand()->getName();
-					if ($check->isNull() || $check instanceof TieredTool) {
+					if ($check->isNull() || get_class($check) === 'pocketmine\item\TieredTool') {
 						$sender->sendMessage($prefix . " " . "Invalid block! Hold a block in hand and execute the command again.");
 						return true;
 					}

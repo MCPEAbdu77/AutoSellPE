@@ -14,11 +14,12 @@ class CapitalEconomyProvider extends EconomyProvider
 
     /** @var Complete */
     private Complete $selector;
+    private $main;
 
-    public function __construct()
+    public function __construct(Main $main)
     {
         Capital::api("0.1.0", function(Capital $api) {
-            $this->selector = $api->completeConfig(Main::getInstance()->getConfig()->getNested("capital-settings.selector"));
+            $this->selector = $api->completeConfig($this->main->getConfig()->getNested("capital-settings.selector"));
         });
     }
 

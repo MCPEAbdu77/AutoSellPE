@@ -54,7 +54,8 @@ class DatabaseManager
 		$name = $player->getName();
 		$mode = match ($args) {
 			'on' => true,
-			'off' => false
+			'off' => false,
+			default => false
 		};
 		$prep = $this->main->db->prepare('UPDATE PLAYERS SET mode = :mode WHERE player = :name;');
 		$prep->bindValue(':mode', $mode);
@@ -69,11 +70,11 @@ class DatabaseManager
 		while ($row = $prep->fetchArray()) {
 			$this->main->players[$row['player']] = match ($row['mode']) {
 				1 => true,
-				0 => false
+				0 => false,
+				default => false
 			};
 		}
 
 	}
 
 }
-
