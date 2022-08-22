@@ -234,9 +234,12 @@ class Main extends PluginBase implements Listener
 			$player->sendTip(TextFormat::RED . "You cannot AutoSell in creative mode!");
 			return;
 		}
-		if (!in_array($player->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
+		if (is_array($this->getConfig()->get("worlds")) && !in_array($player->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
+			return: 
 			$player->sendTip(TextFormat::RED . "You cannot AutoSell in this world!");
 			return;
+		} elseif ($player->getWorld()->getFolderName() !== $this->getConfig()->get("worlds")) {
+			goto return;
 		}
 		$count = 0;
 		foreach ($event->getDrops() as $drop) {

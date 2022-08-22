@@ -4,8 +4,6 @@
 <a href="https://poggit.pmmp.io/p/AutoSellPE"><img src="https://poggit.pmmp.io/shield.dl.total/AutoSellPE"></a>
 <a href="https://poggit.pmmp.io/p/AutoSellPE"><img src="https://poggit.pmmp.io/shield.dl/AutoSellPE"></a>
 
-<b>Github version only supports PM5 / API 5</b>
-
 A PocketMine-MP plugin which automatically sells the blocks that you mine. The blocks and their prices can be changed in the config.yml file. 
 You can even set the worlds on which autosell can be used.
  - This plugin is compatible with AutoInv
@@ -90,4 +88,4 @@ capital-settings:
 
  # Contact
 
- - Discord: MCA7#1245
+ - Discord: MCA7#1245 (https://discord.gg/RPSz2RgPPs)
