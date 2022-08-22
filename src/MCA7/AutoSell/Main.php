@@ -235,11 +235,11 @@ class Main extends PluginBase implements Listener
 			return;
 		}
 		if (is_array($this->getConfig()->get("worlds")) && !in_array($player->getWorld()->getFolderName(), $this->getConfig()->get("worlds"))) {
-			return: 
+			Exception: 
 			$player->sendTip(TextFormat::RED . "You cannot AutoSell in this world!");
 			return;
 		} elseif ($player->getWorld()->getFolderName() !== $this->getConfig()->get("worlds")) {
-			goto return;
+			goto Exception;
 		}
 		$count = 0;
 		foreach ($event->getDrops() as $drop) {
