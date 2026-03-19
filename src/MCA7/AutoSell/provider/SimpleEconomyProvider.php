@@ -2,27 +2,27 @@
 
 namespace MCA7\AutoSell\provider;
 
-use onebone\economyapi\EconomyAPI as EconomyAPI;
+use NhanAZ\SimpleEconomy\Main as SimpleEconomy;
 use pocketmine\player\Player;
 
-class EconomyAPIProvider extends EconomyProvider
+class SimpleEconomyProvider extends EconomyProvider
 {
 
     public function getName(): string
     {
-        return "EconomyAPI";
+        return "SimpleEconomy";
     }
 
     public function checkClass(): bool
     {
-        if (class_exists(EconomyAPI::class))
+        if (class_exists(SimpleEconomy::class))
             return true;
         return false;
     }
 
     public function addToMoney(Player $player, int $amount, array $labels): void
     {
-        EconomyAPI::getInstance()->addMoney($player, $amount);
+        SimpleEconomy::getInstance()->addMoney($player, $amount);
     }
 
 }

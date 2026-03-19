@@ -7,7 +7,7 @@
 A PocketMine-MP plugin which automatically sells the blocks that you mine. The blocks and their prices can be changed in the config.yml file. 
 You can even set the worlds on which autosell can be used.
  - This plugin is compatible with AutoInv
- - This plugin supports BedrockEconomy, Capital & EconomyAPI
+ - This plugin supports BedrockEconomy, Capital, EconomyAPI & SimpleEconomy
 
 # Commands: 
   Usage: `/autosell < on | off | add | remove | view >`
@@ -57,6 +57,7 @@ worlds:
 # 1. BedrockEconomy
 # 2. Capital
 # 3. EconomyAPI
+# 4. SimpleEconomy
 economy-provider: BedrockEconomy
 
 # DO NOT TOUCH IF YOU DONT KNOW WHAT YOU ARE DOING
@@ -88,4 +89,4 @@ capital-settings:
 
  # Contact
 
- - Discord: MCA7#1245 (https://discord.gg/RPSz2RgPPs)
+ - Email: abdu77mcpe@gmail.com

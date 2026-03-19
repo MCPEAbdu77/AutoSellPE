@@ -3,12 +3,13 @@ name: AutoSell
 main: MCA7\AutoSell\Main
 author: MCA7
 api: 5.0.0
-version: 3.2.1
+version: 4.0.0
 website: https://github.com/MCPEAbdu77/AutoSellPE
 softdepend:
   - BedrockEconomy
   - EconomyAPI
   - Capital
+  - SimpleEconomy
 
 commands:
   autosell:

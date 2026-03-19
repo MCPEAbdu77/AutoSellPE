@@ -17,6 +17,7 @@ use MCA7\AutoSell\DatabaseManager;
 use MCA7\AutoSell\provider\BedrockEconomyProvider;
 use MCA7\AutoSell\provider\CapitalEconomyProvider;
 use MCA7\AutoSell\provider\EconomyAPIProvider;
+use MCA7\AutoSell\provider\SimpleEconomyProvider;
 use MCA7\AutoSell\provider\EconomyProvider;
 
 /*
@@ -49,6 +50,7 @@ class Main extends PluginBase implements Listener
 			"bedrockeconomy" => new BedrockEconomyProvider(),
 			"capital" => new CapitalEconomyProvider($this),
 			"economyapi" => new EconomyAPIProvider(),
+			"simpleeconomy" => new SimpleEconomyProvider(),
 			default => null
 		};
 
@@ -82,7 +84,7 @@ class Main extends PluginBase implements Listener
 
 	public function onLoad(): void
 	{
-		if ($this->getConfig()->get('ver') === false || $this->getConfig()->get('ver') !== 1.2) {
+		if ($this->getConfig()->get('ver') === false || $this->getConfig()->get('ver') !== 1.3) {
 			$this->saveDefaultConfig();
 			$this->getServer()->getLogger()->critical(
 				TextFormat::RED . 'Invalid Config version - Update plugin or delete the old config file! Disabling plugin.'
