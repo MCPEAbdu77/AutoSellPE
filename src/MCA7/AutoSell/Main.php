@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MCA7\AutoSell;
+namespace MCA7\AutoSellPE;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -13,12 +13,12 @@ use pocketmine\utils\Config;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\player\Player;
-use MCA7\AutoSell\DatabaseManager;
-use MCA7\AutoSell\provider\BedrockEconomyProvider;
-use MCA7\AutoSell\provider\CapitalEconomyProvider;
-use MCA7\AutoSell\provider\EconomyAPIProvider;
-use MCA7\AutoSell\provider\SimpleEconomyProvider;
-use MCA7\AutoSell\provider\EconomyProvider;
+use MCA7\AutoSellPE\DatabaseManager;
+use MCA7\AutoSellPE\provider\BedrockEconomyProvider;
+use MCA7\AutoSellPE\provider\CapitalEconomyProvider;
+use MCA7\AutoSellPE\provider\EconomyAPIProvider;
+use MCA7\AutoSellPE\provider\SimpleEconomyProvider;
+use MCA7\AutoSellPE\provider\EconomyProvider;
 
 /*
     Credits to cosmicnebula200 for multiple economy provider integration

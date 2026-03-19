@@ -1,6 +1,6 @@
 <?php
 
-namespace MCA7\AutoSell\provider;
+namespace MCA7\AutoSellPE\provider;
 
 use onebone\economyapi\EconomyAPI as EconomyAPI;
 use pocketmine\player\Player;

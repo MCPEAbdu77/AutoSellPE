@@ -1,6 +1,6 @@
 <?php
 
-namespace MCA7\AutoSell\provider;
+namespace MCA7\AutoSellPE\provider;
 
 use NhanAZ\SimpleEconomy\Main as SimpleEconomy;
 use pocketmine\player\Player;

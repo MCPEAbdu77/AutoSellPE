@@ -1,8 +1,8 @@
 <?php
 
-namespace MCA7\AutoSell\provider;
+namespace MCA7\AutoSellPE\provider;
 
-use MCA7\AutoSell\Main;
+use MCA7\AutoSellPE\Main;
 use pocketmine\player\Player;
 use SOFe\Capital\Capital;
 use SOFe\Capital\CapitalException;

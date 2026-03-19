@@ -36,7 +36,7 @@ You can even set the worlds on which autosell can be used.
 # Apache-2.0 (C) 2021
 
 # Don't change this shit
-ver: 1.2
+ver: 1.3
 
 # Prefix: (use § for color coding)
 prefix: "§6AutoSell§aPE§7:"

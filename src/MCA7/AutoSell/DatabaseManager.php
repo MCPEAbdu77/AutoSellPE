@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MCA7\AutoSell;
+namespace MCA7\AutoSellPE;
 
 use SQLite3;
 use pocketmine\player\Player;

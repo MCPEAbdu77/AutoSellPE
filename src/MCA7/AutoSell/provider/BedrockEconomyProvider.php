@@ -1,6 +1,6 @@
 <?php
 
-namespace MCA7\AutoSell\provider;
+namespace MCA7\AutoSellPE\provider;
 
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
 use cooldogedev\BedrockEconomy\BedrockEconomy;
